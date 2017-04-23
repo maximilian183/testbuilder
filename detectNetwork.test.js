@@ -165,6 +165,7 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
+  //  Discover always has a prefix of 6011, 644-649, or 65, and a length of 16 or 19.
 
   var assert = chai.assert;
   (function(){
@@ -275,3 +276,133 @@ describe('Switch', function(){
     };
   };
 });
+
+    function x() {
+        return 0 === chaiSpyExpect.callCount || 0 === chaiSpyShould.callCount
+    }
+    function v(e, t) {
+        return e = "number" == typeof e ? e.toString() : e,
+        e + new Array(t + 1 - e.length).join("0")
+    }
+    function C() {
+        return z && 0 === z.stats.pending && 0 === z.stats.failures && z.stats.passes === z.stats.tests
+    }
+    function E(e, t) {
+        var o = {};
+        return e.forEach(function(e) {
+            t.forEach(function(t) {
+                o[e] || (o[e] = {}),
+                o[e][t] = !1
+            })
+        }),
+        o
+    }
+    function M(e, t) {
+        return e === t.slice(0, e.length)
+    }
+    function N(e, t) {
+        var o = E(e, t);
+        J.args.forEach(function(e) {
+            e = e[0];
+            for (var t in o)
+                M(t, e) && o[t].hasOwnProperty(e.length) && (o[t][e.length] = !0)
+        });
+        for (var n in o)
+            for (var r in o[n])
+                if (!o[n][r])
+                    return !1;
+        return !0
+    }
+    function S(e) {
+        return !!window.localStorage.getItem("testing:" + e)
+    }
+    function A(e) {
+        window.localStorage.setItem("testing:" + e, !0)
+    }
+    function D() {
+        return !!D || (D = !0,
+        !1)
+    }
+    function j(e) {
+        return !(!S(e) && !Q) || (Q = !0,
+        !1)
+    }
+
+    function V() {
+        return "Diner's Club" === detectNetwork("38345678901234") && "Diner's Club" === detectNetwork("39345678901234")
+    }
+    function T() {
+        return N([38, 39], [14])
+    }
+    function P() {
+        return "American Express" === detectNetwork("343456789012345") && "American Express" === detectNetwork("373456789012345")
+    }
+    function I() {
+        return N([34, 37], [15])
+    }
+    function W() {
+        return "Visa" === detectNetwork("4123456789012") && "Visa" === detectNetwork("4123456789012345") && "Visa" === detectNetwork("4123456789012345678")
+    }
+    function H() {
+        return N([4], [13, 16, 19])
+    }
+    function Y() {
+        return "MasterCard" === detectNetwork("5112345678901234") && "MasterCard" === detectNetwork("5212345678901234") && "MasterCard" === detectNetwork("5312345678901234") && "MasterCard" === detectNetwork("5412345678901234") && "MasterCard" === detectNetwork("5512345678901234")
+    }
+    function O() {
+        return N([51, 52, 53, 54, 55], [16])
+    }
+    function U() {
+        var e = [6011, 644, 645, 646, 647, 648, 649, 65]
+          , t = !0;
+        return e.forEach(function(e) {
+            t = t && "Discover" === detectNetwork(v(e, 16)) && "Discover" === detectNetwork(v(e, 19))
+        }),
+        t
+    }
+    function F() {
+        return N([6011, 644, 645, 646, 647, 648, 649, 65], [16, 19])
+    }
+    function L() {
+        for (var e = !0, t = 12; t <= 19; t++)
+            e = e && "Maestro" === detectNetwork(v("5018", t)) && "Maestro" === detectNetwork(v("5020", t)) && "Maestro" === detectNetwork(v("5038", t)) && "Maestro" === detectNetwork(v("6304", t));
+        return e
+    }
+    function R() {
+        return N([5018, 5020, 5038, 6304], [12, 13, 14, 15, 16, 17, 18, 19])
+    }
+    function K() {
+        for (var e = !0, t = 16; t <= 19; t++) {
+            for (var o = 622126; o <= 622925; o++)
+                e = e && "China UnionPay" === detectNetwork(v(o, t));
+            for (var o = 624; o <= 626; o++)
+                e = e && "China UnionPay" === detectNetwork(v(o, t));
+            for (var o = 6282; o <= 6288; o++)
+                e = e && "China UnionPay" === detectNetwork(v(o, t))
+        }
+        return e
+    }
+    function q() {
+        for (var e = [], t = 622126; t <= 622925; t++)
+            e.push(t);
+        for (var t = 624; t <= 626; t++)
+            e.push(t);
+        for (var t = 6282; t <= 6288; t++)
+            e.push(t);
+        return N(e, [16, 17, 18, 19])
+    }
+    function B() {
+        var e = ["4903", "4905", "4911", "4936", "564182", "633110", "6333", "6759"]
+          , t = [16, 18, 19]
+          , o = !0;
+        return e.forEach(function(e) {
+            t.forEach(function(t) {
+                o = o && "Switch" === detectNetwork(v(e, t))
+                console.log(v(e, t));
+            })
+        }),
+        o
+    }
+    function G() {
+        return N([4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759], [16, 18, 19])
+    }
